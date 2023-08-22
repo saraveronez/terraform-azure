@@ -1,7 +1,7 @@
-variable "rg-name" {
+variable "rg_name" {
   type        = string
   description = "Resource Group name"
-  default     = "rg-tf-azure"
+  default     = "rg_tf_azure"
 }
 
 variable "location" {
@@ -33,9 +33,9 @@ variable "ports" {
   type        = map(any)
   description = "Inbound Ports available by nsg"
   default = {
-    101 = 80
-    102 = 443
-    103 = 3389 #acesso a rdp
-    104 = 22
+    101 = 80 #http
+    102 = 443 #ssl
+    103 = 3389 #rdp
+    104 = 22 #ssh
   }
 }

@@ -1,13 +1,13 @@
 resource "azurerm_network_security_group" "nsg" {
-  name                = "tf-azure-nsg"
-  location            = azurerm_resource_group.rg-tf-azure.location
-  resource_group_name = azurerm_resource_group.rg-tf-azure.name
-  depends_on          = [azurerm_resource_group.rg-tf-azure]
+  name                = "tf_nsg"
+  location            = azurerm_resource_group.rg_tf_azure.location
+  resource_group_name = azurerm_resource_group.rg_tf_azure.name
+  depends_on          = [azurerm_resource_group.rg_tf_azure]
 }
 
 resource "azurerm_network_security_rule" "nsgr_input" {
   for_each                    = var.ports
-  resource_group_name         = azurerm_resource_group.rg-tf-azure.name
+  resource_group_name         = azurerm_resource_group.rg_tf_azure.name
   name                        = "portinbound${each.value}"
   priority                    = each.key
   destination_port_range      = each.value
